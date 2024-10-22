@@ -6,8 +6,10 @@ use App\Http\Controllers\TaskController;
 
 Route::get('/', [TaskController::class,'index'])->name('task.index');
 Route::get('/create', [TaskController::class,'create'])->name('task.create');
+Route::get('/edit/{id}', [TaskController::class,'edit'])->name('task.edit');
+Route::get('/delete/{id}', [TaskController::class,'delete'])->name('task.delete');
 Route::post('/new-task', [TaskController::class,'store'])->name('task.new');
-Route::post('/update-task', [TaskController::class,'update'])->name('task.update');
+Route::post('/update-task/{id}', [TaskController::class,'update'])->name('task.update');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

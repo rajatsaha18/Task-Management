@@ -8,7 +8,7 @@ Task Manage
     <div class="container">
         <div class="row">
             <div class="col-md-8 mx-auto">
-                <a href="{{ route('task.create') }}" class="btn btn-success">Create Task</a>
+                <a href="{{ route('task.create') }}" class="btn btn-success mb-5">Create Task</a>
                 <div class="card">
                     <div class="card-header">Task Manage</div>
                     <div class="card-body">
@@ -22,15 +22,19 @@ Task Manage
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($tasks as $task)
                                 <tr>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $task->title }}</td>
+                                    <td>{{ $task->description }}</td>
                                     <td>
-                                        <a href="#" class="btn btn-success"><i class="fa fa-edit"></i></a>
-                                        <a href="#" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                        <a href="{{ route('task.edit',$task->id) }}" class="btn btn-success">Edit</a>
+                                        <a href="{{ route('task.delete',$task->id) }}" class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
+
+                                @endforeach
+
                             </tbody>
                         </table>
                     </div>

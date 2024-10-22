@@ -45,6 +45,8 @@ class TaskController extends Controller
         $task = $this->taskService->getTaskById($id);
         return view('task.edit',compact('task'));
     }
+
+    // Update Specific task
     public function update(Request $request,$id)
     {
         $data = $request->validate([
@@ -54,6 +56,11 @@ class TaskController extends Controller
         $this->taskService->updateTask($id,$data);
         return redirect()->route('task.index')->with('message', 'Task Update Successfully');
 
+    }
 
+    public function delete($id)
+    {
+        $this->taskService->deleteTask($id);
+        return redirect()->route('task.index')->with('message', 'Task Delete Successfully');
     }
 }
