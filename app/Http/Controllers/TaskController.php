@@ -28,6 +28,7 @@ class TaskController extends Controller
         return view('task.create');
     }
 
+    // Store a newly created Task
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -37,5 +38,22 @@ class TaskController extends Controller
 
         $this->taskService->storeTask($data);
         return redirect()->route('task.index')->with('message', 'Task Created Successfully');
+    }
+
+    public function edit($id)
+    {
+        $task = $this->taskService->getTaskById($id);
+        return view('task.edit',compact('task'));
+    }
+    public function update(Request $request,$id)
+    {
+        $data = $request->validate([
+            'title'         => 'required|string|max:255',
+            'description'   => 'required',
+        ]);
+        $this->taskService->updateTask($id,$data);
+        return redirect()->route('task.index')->with('message', 'Task Update Successfully');
+
+
     }
 }

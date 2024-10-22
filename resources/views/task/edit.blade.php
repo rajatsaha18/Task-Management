@@ -1,6 +1,6 @@
 @extends('master')
 @section('title')
-Task Create
+Task Edit
 @endsection
 
 @section('content')
@@ -10,17 +10,17 @@ Task Create
             <div class="col-md-8 mx-auto">
                 <a href="{{ route('task.index') }}" class="btn btn-info">Back</a>
                 <div class="card">
-                    <div class="card-header">Task Create</div>
+                    <div class="card-header">Task Edit</div>
                     <div class="card-body">
-                        <form action="{{ route('task.new') }}" method="POST">
+                        <form action="{{ route('task.update') }}" method="POST">
                             @csrf
                             <div class="from-group">
                                 <label for="">Title</label>
-                                <input type="text" name="title" class="form-control">
+                                <input type="text" name="title" value="{{ $task->title }}" class="form-control">
                             </div>
                             <div class="from-group">
                                 <label for="">Description</label>
-                                <textarea name="description" class="form-control"></textarea>
+                                <textarea name="description" class="form-control">{{ $task->description }}</textarea>
                             </div>
                             <div class="from-group">
                                 <label for=""></label>

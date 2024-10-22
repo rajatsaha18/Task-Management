@@ -8,6 +8,7 @@ Task Manage
     <div class="container">
         <div class="row">
             <div class="col-md-8 mx-auto">
+                <a href="{{ route('task.create') }}" class="btn btn-success">Create Task</a>
                 <div class="card">
                     <div class="card-header">Task Manage</div>
                     <div class="card-body">
