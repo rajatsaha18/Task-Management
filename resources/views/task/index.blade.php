@@ -29,7 +29,7 @@ Task Manage
                                     <td>{{ $task->description }}</td>
                                     <td>
                                         <a href="{{ route('task.edit',$task->id) }}" class="btn btn-success">Edit</a>
-                                        <a href="{{ route('task.delete',$task->id) }}" class="btn btn-danger">Delete</a>
+                                        <a href="{{ route('task.delete',$task->id) }}" class="btn btn-danger" onclick="return confirm('Are You Sure Delete This ?')">Delete</a>
                                     </td>
                                 </tr>
 
